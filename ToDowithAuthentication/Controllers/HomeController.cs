@@ -10,7 +10,15 @@ namespace ToDowithAuthentication.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "UserTasks");
+            }
+            else
+            {
+                return View();
+            }
+
         }
 
         public ActionResult About()
